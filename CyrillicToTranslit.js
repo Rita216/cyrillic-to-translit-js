@@ -10,34 +10,36 @@ module.exports = function cyrillicToTranslit(config) {
 
   // letters shared between languages
   const _firstLetters = {
-    "а": "a",
-    "б": "b",
-    "в": "v",
-    "д": "d",
-    "з": "z",
-    "й": "y",
-    "к": "k",
-    "л": "l",
-    "м": "m",
-    "н": "n",
-    "о": "o",
-    "п": "p",
-    "р": "r",
-    "с": "s",
-    "т": "t",
-    "у": "u",
-    "ф": "f",
-    "ь": ""
+    "а": " a",
+    "б": " b",
+    "в": " v",
+    "д": " d",
+    "з": " z",
+    "й": " i",
+    "к": " k",
+    "л": " l",
+    "м": " m",
+    "н": " n",
+    "о": " o",
+    "п": " p",
+    "р": " r",
+    "с": " s",
+    "т": " t",
+    "у": " u",
+    "ф": " f",
+    "ь": " S",
+    "ө": " ow",
+    "ү": " uw"
   };
 
   // language-specific letters
   if (_preset === "ru") {
     Object.assign(_firstLetters, {
-      "г": "g",
-      "и": "i",
-      "ъ": "",
-      "ы": "i",
-      "э": "e",
+      "г": " g",
+      "и": " i",
+      "ъ": " H",
+      "ы": " ii",
+      "э": " e",
     });
   } else if (_preset === "uk") {
     Object.assign(_firstLetters, {
@@ -66,15 +68,15 @@ module.exports = function cyrillicToTranslit(config) {
 
   // digraphs appearing in all positions
   const _regularDigraphs = {
-    "ё": "yo",
-    "ж": "zh",
-    "х": "kh",
-    "ц": "ts",
-    "ч": "ch",
-    "ш": "sh",
+    "ё": " yo",
+    "ж": " j",
+    "х": " h",
+    "ц": " ts",
+    "ч": " ch",
+    "ш": " sh",
     "щ": "shch",
-    "ю": "yu",
-    "я": "ya",
+    "ю": " yuw",
+    "я": " ya",
   }
 
   const _firstDigraphs = Object.assign({}, _regularDigraphs, _initialDigraphs);
@@ -98,9 +100,9 @@ module.exports = function cyrillicToTranslit(config) {
   if (_preset === "ru") {
     // Russian: i > always и, y > ы in non-initial position, e > е in non-initial position
     _reversedNonFirstLetters = Object.assign(invert(_firstLetters), {
-      "i": "и", 
-      "y": "ы",
-      "e": "е",
+      "i": " и", 
+      "y": " u",
+      "e": " yе",
       "": "" 
     });
   } else if (_preset === "uk") {
